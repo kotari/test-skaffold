@@ -10,5 +10,5 @@ patchesJson6902:
     version: v1
     kind: Deployment
     name: test-skaffold
-  path: dv.yaml
+  path: flask.yaml
 
