@@ -11,4 +11,21 @@ minikube - https://kubernetes.io/docs/tasks/tools/install-minikube/
 kustomize - https://github.com/kubernetes-sigs/kustomize/blob/master/docs/INSTALL.md
 skaffold - https://skaffold.dev/docs/install/
 
+To run flask profile use the below command (still need to figure out if --port-forward can be skipped)
+```
+skaffold dev -p flask --port-forward
+```
+This will start flask app on default port and to cleanup 
+```
+skaffold delete -p flask
+```
 
+To run gunicorn profile use the below command
+```
+skaffold dev -p gunicorn --port-forward
+```
+This will start gunicorn on binding defined in gunicorn_conf.py
+To do a cleanup
+```
+skaffold delete -p gunicorn
+```

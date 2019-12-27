@@ -13,6 +13,6 @@ app.config["DEBUG"] = True
 def home():
     logger.debug(socket.gethostname())
     logger.debug('hello')
-    return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>" + socket.gethostname() + " blah blah black" + os.uname()[1] + "<p>" + str(os.getpid()) + "</p>"
+    return "<h1>Python Flask/Gunicorn testing/h1><p>Skeleton python application</p>" + socket.gethostname() + " blah blah black" + os.uname()[1] + "<p>" + str(os.getpid()) + "</p>"
 
 # app.run()
