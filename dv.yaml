@@ -1,0 +1,3 @@
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value: ["python", "-m", "flask", "run", "--host=0.0.0.0"]

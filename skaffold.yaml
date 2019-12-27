@@ -1,0 +1,52 @@
+apiVersion: skaffold/v2alpha1
+kind: Config
+metadata:
+  name: test-skaffold
+# build:
+#   artifacts:
+#   - image: python-test
+#     sync:
+#       manual:
+#       - src: 'src/**/*.py'
+#         dest: .
+#         strip: src/
+# deploy:
+#   kubectl:
+#     manifests:
+#     - test-skaffold.yaml
+profiles:
+  - name: flask
+    build:
+      artifacts:
+      - image: python-test
+        sync:
+          manual:
+          - src: 'src/**/*.py'
+            dest: .
+            strip: src/
+      # local: {}
+    deploy:
+      # kubectl:
+      #   manifests:
+      #   - test-skaffold.yaml
+      kustomize: {}
+    # portForward:
+    #   - resourceType: service
+    #     resourceName: test-skaffold
+    #     port: 5000
+    #     localPort: 6000
+  - name: gunicorn
+    build:
+      artifacts:
+      - image: python-test
+        sync:
+          manual:
+          - src: 'src/**/*.py'
+            dest: .
+            strip: src/
+      local: {}
+    deploy:
+      kubectl:
+        manifests:
+        - test-skaffold.yaml
+      # kustomize: {}

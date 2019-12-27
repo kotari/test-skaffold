@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-skaffold
+spec:
+  ports:
+  - port: 5000
+  type: LoadBalancer
+  selector:
+    app: test-skaffold
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-skaffold
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-skaffold
+  template:
+    metadata:
+      labels:
+        app: test-skaffold
+    spec:
+      # initContainers:
+      #   - name: init-venv
+      #     image: python:3.7.4-slim
+      #     volumeMounts:
+      #     - name: mylib
+      #       mountPath: /var/taco
+      #     command:
+      #       - bash
+      #       - -c
+      #       - 'python -m venv /var/taco; source /var/taco/bin/activate; which python; pip install numpy==1.18.0; pip list; echo "installation complete"'
+      containers:
+      - name: python
+        image: python-test
+        # command: ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+        # volumeMounts:
+        #   - mountPath: /usr/share/taco
+        #     name: mylib
+        #     readOnly: false
+        ports:
+        - containerPort: 5000
+      # volumes:
+      #   - name: mylib
+      #     emptyDir: {}
