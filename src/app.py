@@ -13,6 +13,7 @@ app.config["DEBUG"] = True
 def home():
     logger.debug(socket.gethostname())
     logger.debug('hello')
-    return "<h1>Python Flask/Gunicorn testing/h1><p>Skeleton python application</p>" + socket.gethostname() + " blah blah black" + os.uname()[1] + "<p>" + str(os.getpid()) + "</p>"
+    logger.debug(os.getpid())
+    return "<h1>Python Flask/Gunicorn testing</h1><p>Skeleton python application</p> Hostname - " + socket.gethostname() + " <br/> Hostname - " + os.uname()[1] + "<p> ProcessId - " + str(os.getpid()) + "</p>"
 
 # app.run()
