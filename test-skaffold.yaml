@@ -35,7 +35,7 @@ spec:
       #       - 'python -m venv /var/taco; source /var/taco/bin/activate; which python; pip install numpy==1.18.0; pip list; echo "installation complete"'
       containers:
       - name: python
-        image: python-test
+        image: docker.io/rkotari/python-test
         # command: ["python", "-m", "flask", "run", "--host=0.0.0.0"]
         # volumeMounts:
         #   - mountPath: /usr/share/taco
